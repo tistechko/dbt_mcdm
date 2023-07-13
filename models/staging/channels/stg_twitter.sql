@@ -1,4 +1,10 @@
-with src_promoted_tweets_twitter_all_data as(
+with 
+
+source as(
+    select * from {{ source ( 'dbt_nmatyu', 'src_promoted_tweets_twitter_all_data' )}}
+),
+
+staged as (
 
 SELECT 
   channel,
@@ -6,7 +12,7 @@ SELECT
   ROUND(sum(spend) / sum(engagements),2) AS cost_per_engage,
   sum(impressions) AS total_impressions,
   ROUND(sum(spend) / sum(clicks),2) AS cpc
-FROM `improvado-391920.dbt_nmatyu.src_promoted_tweets_twitter_all_data` 
+FROM source 
 GROUP BY channel
 )
-SELECT * FROM src_promoted_tweets_twitter_all_data
+SELECT * FROM staged 
