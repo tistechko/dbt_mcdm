@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: dbt_nmatyu
+    database: improvado-391920
+    tables:
+      - name: src_ads_bing_all_data
+      - name: src_ads_creative_facebook_all_data
+      - name: src_ads_tiktok_ads_all_data
+      - name: dim_ads_performance
